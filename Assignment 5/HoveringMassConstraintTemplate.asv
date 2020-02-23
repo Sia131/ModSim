@@ -4,7 +4,7 @@ clc
 % Parameters
 syms m1 m2 L g real
 % Force
-u = sym('u',[3,1]);
+u = sym('u',[3,1])
 
 % Positions of point masses
 pm1 = sym('pm1',[3,1]);
@@ -21,18 +21,16 @@ ddq = [ddpm1;ddpm2];
 z = sym('z');
 
 % Generalized forces
-Q = [u; 0; 0];
+Q = [u; 0, 0];
 % Kinetic energy (function of q and dq)
-dpm1 = jacobian(pm1,q)*dq;
-dpm2 = jacobian(pm2,q)*dq;
-T =0.5*m1*(dpm1)'*dpm1 + 0.5*m2*(dpm2)'*dpm2;
+T = ;
 % Potential energy
-V = m1*g*pm1(2) + m2*g*pm2(2);
+V = ;
 % Lagrangian (function of q and dq)
-Lag = T - V;
+Lag = ;
 % Constraint
 dpm  = pm1 - pm2; % difference of positions
-C =0.5*((dpm)'*dpm - L*L);
+C = ;
 
 % Derivatives of constrained Lagrangian
 Lag_q = simplify(jacobian(Lag,q)).';
@@ -43,10 +41,10 @@ C_q = simplify(jacobian(C,q)).';
 
 % Matrices for problem 1
 M = Lag_dqdq;
-b = Q - Lag_q - z*C_q;
+b = [];
 
 % Matrices for problem 2
-Mimplicit = [Lag_dqdq C_q; C_q.' 0];
-c = [Q-Lag_q; -dq.'*C_q];
+Mimplicit = [];
+c = [];
 Mexplicit = simplify(inv(Mimplicit));
 rhs = simplify(Mexplicit*c);

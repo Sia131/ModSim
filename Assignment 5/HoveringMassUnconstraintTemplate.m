@@ -24,7 +24,7 @@ pm2  = pm1 + [L*cos(a(2))*sin(a(1)), -L*cos(a(1)), -L*sin(a(2))*sin(a(1))]';
 % Velocity of point mass 2
 dpm2 = jacobian(pm2,q)*dq;
 % Generalized forces
-Q = [u, 0, 0]';
+Q = [u; 0; 0];
 % Kinetic energy
 T = (1/2)*m2*(dpm2)'*dpm2 + (1/2)*m1*(dpm1)'*dpm1;
 T = simplify(T);
